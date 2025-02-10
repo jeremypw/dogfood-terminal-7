@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=Terminal
-TryExec=io.elementary.terminal
-Exec=io.elementary.terminal -w %u
-Icon=utilities-terminal
+Name=Dogfood-terminal-7
+TryExec=com.github.jeremypw.dogfood-terminal-7
+Exec=com.github.jeremypw.dogfood-terminal-7 -w %u
+Icon=utilities-terminal-symbolic
 Type=Application
 StartupNotify=true
-X-GNOME-Gettext-Domain=io.elementary.terminal
+X-GNOME-Gettext-Domain=com.github.jeremypw.dogfood-terminal-7
 NoDisplay=true
 MimeType=inode/directory;

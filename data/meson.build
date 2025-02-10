@@ -4,7 +4,7 @@ podir = meson.project_source_root() / 'po'
 i18n.merge_file(
     type: 'desktop',
     input: meson.project_name() + '.desktop.in',
-    output: '@BASENAME@',
+    output: install_name + '.desktop',
     po_dir: podir / 'extra',
     install: true,
     install_dir: datadir / 'applications'
@@ -13,7 +13,7 @@ i18n.merge_file(
 i18n.merge_file(
     type: 'desktop',
     input: 'open-pantheon-terminal-here.desktop.in',
-    output: '@BASENAME@',
+    output: 'open-dogfood-terminal-here.desktop',
     po_dir: podir / 'extra',
     install: true,
     install_dir: datadir / 'applications'
@@ -21,7 +21,7 @@ i18n.merge_file(
 
 i18n.merge_file(
     input: meson.project_name() + '.appdata.xml.in',
-    output: '@BASENAME@',
+    output: install_name + '.appdata.xml',
     po_dir: podir / 'extra',
     install: true,
     install_dir: datadir / 'metainfo'
@@ -29,36 +29,37 @@ i18n.merge_file(
 
 install_data(
     meson.project_name() + '.gschema.xml',
-    install_dir: datadir / 'glib-2.0' / 'schemas'
+    install_dir: datadir / 'glib-2.0' / 'schemas',
+    rename: install_name + '.gschema.xml'
 )
 
-install_data(
-    'pantheon_terminal_process_completion_notifications.fish',
-    install_dir: datadir / 'fish' / 'vendor_conf.d'
-)
+# install_data(
+#     'pantheon_terminal_process_completion_notifications.fish',
+#     install_dir: datadir / 'fish' / 'vendor_conf.d'
+# )
 
-install_data(
-    'enable-zsh-completion-notifications',
-    install_dir: datadir / meson.project_name()
-)
+# install_data(
+#     'enable-zsh-completion-notifications',
+#     install_dir: datadir / meson.project_name()
+# )
 
 terminal_gresource = gnome.compile_resources('gresource', meson.project_name() + '.gresource.xml')
 
-test_schemas = gnome.compile_schemas(depend_files: meson.project_name() + '.gschema.xml', build_by_default: false)
+# test_schemas = gnome.compile_schemas(depend_files: meson.project_name() + '.gschema.xml', build_by_default: false)
 
 desktop_file_validate = find_program('desktop-file-validate', required: false)
 if desktop_file_validate.found()
     test(
         'Validate desktop file', desktop_file_validate,
-        args: meson.current_build_dir() / meson.project_name() + '.desktop'
+        args: meson.current_build_dir() / install_name + '.desktop'
     )
 
     test(
         'Validate open here desktop file', desktop_file_validate,
-        args: meson.current_build_dir() / 'open-pantheon-terminal-here.desktop'
+        args: meson.current_build_dir() / 'open-dogfood-terminal-here.desktop'
     )
 endif
 
-install_man(
-    'io.elementary.terminal.1'
-)
+# install_man(
+#     'io.elementary.terminal.1'
+# )

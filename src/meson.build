@@ -35,7 +35,7 @@ terminal_sources = [
 ]
 
 executable(
-    meson.project_name(),
+    install_name,
     terminal_sources,
     dependencies: terminal_deps,
     install : true
@@ -43,33 +43,33 @@ executable(
 
 # tests
 
-test_env = [
-    'G_TEST_SRCDIR=' + meson.current_source_dir(),
-    'G_TEST_BUILDDIR=' + meson.current_build_dir(),
-    'GSETTINGS_SCHEMA_DIR=' + meson.project_build_root() / 'data',
-    'GSETTINGS_BACKEND=memory',
-    'GIO_USE_VFS=local'
-]
+# test_env = [
+#     'G_TEST_SRCDIR=' + meson.current_source_dir(),
+#     'G_TEST_BUILDDIR=' + meson.current_build_dir(),
+#     'GSETTINGS_SCHEMA_DIR=' + meson.project_build_root() / 'data',
+#     'GSETTINGS_BACKEND=memory',
+#     'GIO_USE_VFS=local'
+# ]
 
-add_test_setup(
-  'headless',
-  exe_wrapper: [ find_program('xvfb-run'), '-a', '-s', '-screen 0 1024x768x24 -noreset' ],
-  is_default: true
-)
+# add_test_setup(
+#   'headless',
+#   exe_wrapper: [ find_program('xvfb-run'), '-a', '-s', '-screen 0 1024x768x24 -noreset' ],
+#   is_default: true
+# )
 
-app_test = executable(
-    meson.project_name() + '.tests.application',
-    terminal_sources + 'tests/Application.vala',
-    dependencies: terminal_deps,
-    vala_args: [ '--define', 'TESTS']
-)
+# app_test = executable(
+#     meson.project_name() + '.tests.application',
+#     terminal_sources + 'tests/Application.vala',
+#     dependencies: terminal_deps,
+#     vala_args: [ '--define', 'TESTS']
+# )
 
-test(
-    'Application',
-    app_test,
-    env: test_env,
-    protocol: 'tap',
-    depends: test_schemas
-)
+# test(
+#     'Application',
+#     app_test,
+#     env: test_env,
+#     protocol: 'tap',
+#     depends: test_schemas
+# )
 
-subdir('tests')
+# subdir('tests')

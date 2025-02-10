@@ -5,6 +5,9 @@ project(
     meson_version: '>=0.60'
 )
 
+# Install under different name so may be run alongside original
+install_name = 'com.github.jeremypw.dogfood-terminal-7'
+
 valac = meson.get_compiler('vala')
 cc = meson.get_compiler('c')
 
@@ -32,9 +35,9 @@ linux_dep = valac.find_library('linux', required: false)
 m_dep = cc.find_library('m', required : false)
 
 conf_data = configuration_data()
-conf_data.set_quoted('PROJECT_NAME', meson.project_name())
+conf_data.set_quoted('PROJECT_NAME', install_name)
 conf_data.set_quoted('VERSION', meson.project_version())
-conf_data.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+conf_data.set_quoted('GETTEXT_PACKAGE', install_name)
 conf_data.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
 
 add_project_arguments(
@@ -52,7 +55,7 @@ if linux_dep.found()
 endif
 
 add_project_arguments(
-    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+    '-DGETTEXT_PACKAGE="@0@"'.format(install_name),
     '-DPCRE2_CODE_UNIT_WIDTH=0',
     '-DHANDY_USE_UNSTABLE_API',
     language:'c'

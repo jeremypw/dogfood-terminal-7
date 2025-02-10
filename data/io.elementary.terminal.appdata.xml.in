@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2015–2022 elementary, Inc. <contact@elementary.io> -->
 <component type="desktop-application">
-  <id>io.elementary.terminal</id>
-  <launchable type="desktop-id">io.elementary.terminal.desktop</launchable>
-  <translation type="gettext">io.elementary.terminal</translation>
+  <id>com.github.jeremypw.dogfood-terminal-7</id>
+  <launchable type="desktop-id">com.github.jeremypw.dogfood-terminal-7.desktop</launchable>
+  <translation type="gettext">com.github.jeremypw.dogfood-terminal-7</translation>
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0+</project_license>
 
-  <name>Terminal</name>
+  <name>Dogfood Terminal</name>
   <summary>Use the command line</summary>
   <description>
     <p>Terminal is a terminal emulator application for accessing a UNIX shell environment which can be used to run programs available on your system.</p>
@@ -37,7 +37,7 @@
   <content_rating type="oars-1.1" />
 
   <provides>
-    <binary>io.elementary.terminal</binary>
+    <binary>com.github.jeremypw.dogfood-terminal-7</binary>
   </provides>
 
   <url type="homepage">https://elementary.io/</url>

@@ -20,7 +20,7 @@ public class Terminal.Application : Gtk.Application {
 
     public Application () {
         Object (
-            application_id: "io.elementary.terminal", /* Ensures only one instance runs */
+            application_id: "com.github.jeremypw.dogfood-terminal-7", /* Ensures only one instance runs */
             flags: ApplicationFlags.HANDLES_COMMAND_LINE | ApplicationFlags.CAN_OVERRIDE_APP_ID
         );
     }
@@ -238,8 +238,8 @@ public class Terminal.Application : Gtk.Application {
         base.startup ();
         Hdy.init ();
 
-        saved_state = new GLib.Settings ("io.elementary.terminal.saved-state");
-        settings = new GLib.Settings ("io.elementary.terminal.settings");
+        saved_state = new GLib.Settings ("com.github.jeremypw.dogfood-terminal-7.saved-state");
+        settings = new GLib.Settings ("com.github.jeremypw.dogfood-terminal-7.settings");
         settings_sys = new GLib.Settings ("org.gnome.desktop.interface");
         themes = new Themes ();
 

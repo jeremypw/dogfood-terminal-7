@@ -1,11 +1,11 @@
 [Desktop Entry]
-Name=Terminal
+Name=Dogfood Terminal
 GenericName=Terminal
 Comment=Use the command line
-TryExec=io.elementary.terminal
-Exec=io.elementary.terminal
+TryExec=com.github.jeremypw.dogfood-terminal-7
+Exec=com.github.jeremypw.dogfood-terminal-7
 # TRANSLATORS: Do NOT translate or transliterate this text (this is an icon file name)!
-Icon=utilities-terminal
+Icon=utilities-terminal-symbolic
 Type=Application
 Categories=GNOME;GTK;System;TerminalEmulator;
 StartupNotify=true
@@ -15,8 +15,8 @@ Actions=NewWindow;NewRootWindow;
 
 [Desktop Action NewWindow]
 Name=New Window
-Exec=io.elementary.terminal -n
+Exec=com.github.jeremypw.dogfood-terminal-7 -n
 
 [Desktop Action NewRootWindow]
 Name=New Root Tab
-Exec=io.elementary.terminal -e "sudo -s"
+Exec=com.github.jeremypw.dogfood-terminal-7 -e "sudo -s"
