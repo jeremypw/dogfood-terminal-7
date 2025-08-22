@@ -18,7 +18,7 @@
 
   <schema path="/com/github/jeremypw/dogfood-terminal-7/saved-state/" id="com.github.jeremypw.dogfood-terminal-7.saved-state">
     <key name="window-size" type="(ii)">
-      <default>(-1, -1)</default>
+      <default>(600, 400)</default>
       <summary>Most recent window size</summary>
       <description>Most recent window size (width, height)</description>
     </key>
