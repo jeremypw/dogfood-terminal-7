@@ -6,7 +6,7 @@ project(
 )
 
 # Install under different name so may be run alongside original
-install_name = 'com.github.jeremypw.dogfood-terminal-7'
+install_name = 'terminal-testing'
 
 valac = meson.get_compiler('vala')
 cc = meson.get_compiler('c')
