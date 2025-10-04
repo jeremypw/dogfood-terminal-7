@@ -326,11 +326,8 @@ namespace Terminal {
 
             title_stack = new Gtk.Stack () {
                 transition_type = Gtk.StackTransitionType.SLIDE_UP_DOWN,
-                hhomogeneous = false,
-                hexpand = false
+                hhomogeneous = false
             };
-
-            search_toolbar.width_request = 300;
             title_stack.add (title_label);
             title_stack.add (search_toolbar);
             // Must show children before visible_child can be set
@@ -339,6 +336,7 @@ namespace Terminal {
             title_stack.visible_child = title_label;
 
             header = new Hdy.HeaderBar () {
+                centering_policy = STRICT,
                 show_close_button = true,
                 has_subtitle = false
             };
@@ -372,7 +370,7 @@ namespace Terminal {
                     }
 
                     if (Application.settings.get_boolean ("save-exited-tabs")) {
-                        make_restorable (term);
+                        notebook.make_restorable (term.current_working_directory);
                     }
 
                     disconnect_terminal_signals (term);
@@ -844,19 +842,6 @@ namespace Terminal {
 
             tab.child.show_all ();
             return tab;
-        }
-
-        private void make_restorable (TerminalWidget term) {
-            //FIXME Terminal child always exits when tab is closed (unlike Granite.DynamicNotebook)
-            if (Application.settings.get_boolean ("save-exited-tabs")) {
-                notebook.make_restorable (term.current_working_directory);
-            }
-
-            if (!term.child_has_exited) {
-                term.term_ps ();
-            }
-
-            return;
         }
 
         private void update_font () {
